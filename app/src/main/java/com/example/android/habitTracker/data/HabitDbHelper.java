@@ -92,7 +92,7 @@ public class HabitDbHelper extends SQLiteOpenHelper {
         return newRowId != -1;
     }
 
-    public String displayDatabaseInfo() {
+    public Cursor getDatabaseCursor() {
         // Create and/or open a database to read from it
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -114,6 +114,11 @@ public class HabitDbHelper extends SQLiteOpenHelper {
                 null,                  // Don't group the rows
                 null,                  // Don't filter by row groups
                 null);                   // The sort order
+
+        return cursor;
+    }
+
+    public String parseCursor(Cursor cursor) {
 
         StringBuilder tableDisplayString = new StringBuilder();
 
